@@ -7,6 +7,8 @@ var request = require('request')
 var tokenApi = require('./routes/token');
  
 var app = express();
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
  
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,17 +22,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
  
-var middleWare = function(req, res, next) {
-    console.log(req.headers);
-        request('https://jsonplaceholder.typicode.com/posts/1', function(error, response, body) {
-    console.log(body);
-    console.log(response.statusCode) // 200 
-    console.log(response.headers['content-type']) // 'image/png'
-    req.body = body;
-    next();
-  });
-}
-app.use(middleWare);
+
 app.use('/api/v1/', tokenApi);
  
 // catch 404 and forward to error handler

@@ -1,13 +1,13 @@
 <h1>Login</h1>
 <div class="row">
     <div class="col-lg-2">
-        <input type="text" class="form-control">
+        <input type="text" #username class="form-control">
     </div>
     <div class="col-lg-2">
-        <input type="text" class="form-control">
+        <input type="text" #password class="form-control">
     </div>
     <div class="col-lg-2">
-        <button value="Submit" (click)="authenticate()" class="form-control">Submit</button>
+        <button value="Submit" (click)="authenticate(username.value, password.value)" class="form-control">Submit</button>
     </div>
 </div>
 <div>{{tokenValues.body}}</div>

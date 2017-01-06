@@ -25,9 +25,8 @@ export class LoginComponent implements OnInit {
         // your resolved data from route
       });
   }
-  public authenticate() {
-      console.log('Clicked');
-      this.loginService.getToken().subscribe(data => this.saveToken(data));
+  public authenticate(username : string, password : string ) {
+      this.loginService.getToken(username, password).subscribe(data => this.saveToken(data));
   }
   private saveToken(data) {
       this.tokenValues = data;
